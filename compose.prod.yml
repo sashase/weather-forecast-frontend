@@ -1,0 +1,6 @@
+services:
+  app:
+    container_name: frontend-app-prod
+    image: frontend-app-prod
+    ports:
+      - 80:8080

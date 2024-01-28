@@ -1,0 +1,13 @@
+services:
+  app:
+    container_name: frontend-app-dev
+    image: frontend-app-dev
+    build:
+      target: development
+    environment:
+      VITE_PORT: 8000
+    ports:
+      - 8000:8000
+    command: npm run dev
+    volumes:
+      - .:/usr/src/app

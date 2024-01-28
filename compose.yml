@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    env_file:
+      - .env.local
+    volumes:
+      - /usr/src/app/node_modules
