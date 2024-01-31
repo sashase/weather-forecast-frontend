@@ -2,7 +2,7 @@ import { current } from "../data/mock"
 
 export default function Current() {
   return (
-    <div className="col-span-2 grid grid-cols-2 md:grid-cols-3 md:gap-5 py-5 px-8 animate-float-in bg-white shadow-normal rounded-[45px] text-3xl lg:text-4xl 2xl:text-5xl">
+    <div className="col-span-2 grid grid-cols-2 md:grid-cols-3 md:gap-5 py-5 px-8 animate-float-in bg-white shadow-normal rounded-primary text-3xl lg:text-4xl 2xl:text-5xl">
       <div className="flex flex-col gap-3 md:col-span-2">
         <h3 className="text-4xl 2xl:text-5xl">
           Kyiv{" "}
@@ -34,7 +34,7 @@ export default function Current() {
       <div className="col-span-3 flex items-center gap-2 lg:gap-5 mt-5 md:mt-0 overflow-auto">
         {current.map((hour) => (
           <div
-            className="flex flex-col items-center rounded-[45px] gap-1 py-3 px-6 lg:px-7 bg-background text-lg"
+            className="flex flex-col items-center rounded-primary gap-1 py-3 px-6 lg:px-7 bg-background text-lg"
             key={hour.date.getHours()}>
             <span className="opacity-50">{hour.date.getHours()}:00</span>
             <img

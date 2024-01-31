@@ -2,7 +2,7 @@ import { forecast } from "../data/mock"
 
 export default function Forecast() {
   return (
-    <div className="row-start-2 col-span-2 animate-float-in bg-white shadow-normal rounded-[45px] flex flex-col gap-2 py-5 px-6 lg:px-8">
+    <div className="row-start-2 col-span-2 animate-float-in bg-white shadow-normal rounded-primary flex flex-col gap-2 py-5 px-6 lg:px-8">
       <h3 className="text-3xl lg:text-4xl">Forecast</h3>
       <hr className="mb-4" />
 
@@ -10,7 +10,7 @@ export default function Forecast() {
       <div className="gap-5 hidden lg:flex lg:flex-col">
         {forecast.map((day) => (
           <div
-            className="flex items-center rounded-[45px] gap-5 xl:gap-10 py-3 px-6 xl:py-4 xl:px-8 bg-background text-3xl"
+            className="flex items-center rounded-primary gap-5 xl:gap-10 py-3 px-6 xl:py-4 xl:px-8 bg-background text-3xl"
             key={day.date.getDate()}>
             <img
               src={`svg/${day.condition}.svg`}
@@ -45,7 +45,7 @@ export default function Forecast() {
       <div className="gap-5 flex flex-col lg:hidden">
         {forecast.map((day) => (
           <div
-            className="grid grid-cols-2 items-center rounded-[45px] py-3 px-6 bg-background"
+            className="grid grid-cols-2 items-center rounded-primary py-3 px-6 bg-background"
             key={day.date.getDate()}>
             <div className="text-2xl">
               <p className="ml-auto">
