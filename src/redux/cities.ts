@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { City } from "../interfaces"
+import { City, Properties } from "../interfaces"
 
 export const citiesSlice = createSlice({
   name: "cities",
@@ -7,9 +7,15 @@ export const citiesSlice = createSlice({
     cities: (JSON.parse(localStorage.getItem("cities") as string) || []) as City[]
   },
   reducers: {
-    addCity: (state, { payload }) => {
-      payload.temperature = 1
-      state.cities.push(payload)
+    addCity: (state, { payload }: { payload: Properties }) => {
+      const city: City = {
+        name: payload.name,
+        region: payload.place_formatted.split(",")[0],
+        latitude: payload.coordinates.latitude,
+        longitude: payload.coordinates.longitude,
+        temperature: 1  // test
+      }
+      state.cities.push(city)
       localStorage.setItem("cities", JSON.stringify(state.cities))
     },
     deleteCity: (state, { payload }) => {

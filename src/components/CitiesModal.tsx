@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import { useSelector } from "react-redux"
 import { RootState } from "../redux/store"
 import CitiesApiService from "../core/services/CitiesApiService"
-import { City } from "../interfaces"
+import { CitySearch } from "../interfaces"
 import CityItem from "./CityItem"
 import CityItemsSkeleton from "./CityItemsSkeleton"
 
@@ -17,7 +17,7 @@ export default function CitiesModal({
 
   const [query, setQuery] = useState<string>("")
   const [loading, setLoading] = useState<boolean>(false)
-  const [suggestions, setSuggestions] = useState<City[]>()
+  const [suggestions, setSuggestions] = useState<CitySearch[]>()
 
   const popupRef = useRef<HTMLDivElement>(null)
 
@@ -36,7 +36,7 @@ export default function CitiesModal({
       setLoading(true)
 
       const { data } = await CitiesApiService.getSuggestions(query)
-      setSuggestions(data)
+      setSuggestions(data?.features ?? [])
 
       setLoading(false)
     }, 400)
@@ -58,7 +58,7 @@ export default function CitiesModal({
     <div className="animate-fade-in fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-10">
       <div
         ref={popupRef}
-        className="max-h-[90%] max-w-[90%] bg-white px-7 pt-6 pb-8 rounded-3xl flex flex-col items-center justify-center gap-4">
+        className="max-h-[90%] max-w-[90%] bg-white px-7 pt-6 pb-8 rounded-3xl flex flex-col items-center justify-start gap-4 overflow-auto">
         <h3 className="self-start text-3xl lg:text-4xl">Search</h3>
         <hr className="mb-2 w-full" />
         <input
